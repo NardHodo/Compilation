@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Llenard's Portfolio</title>
+  <link rel="stylesheet" href="assets/styles.css">
+</head>
+<body>
+  <header>
+    <div class="logo"><span>GD</span></div>
+    <div class="title">
+      <h1>Elective 3 Portfolio</h1>
+    </div>
+  </header>
+
+  <main>
+    <div class="tabs" role="tablist">
+      <div class="pill" aria-hidden="true"></div>
+      <button class="tab active" data-tab="about" role="tab" aria-selected="true"><span class="tab-label">About Me</span></button>
+      <button class="tab" data-tab="activities" role="tab" aria-selected="false"><span class="tab-label">Compilation of Activities</span></button>
+    </div>
+
+    <section class="panel" id="about" role="tabpanel">
+      <div class="about">
+        <div class="card">
+          <h3>Hello!</h3>
+          <p>Here's my medyo tinamad na Portfolio. Welcome and Enjoy your stay.</p>
+          <div class="placeholder">
+            <img src="assets/Llenard.jpg" alt="Your portrait">
+          </div>
+        </div>
+        <div class="card">
+          <div class="highlight-group">
+            <h3>Course Highlights</h3>
+            <p>The wonderful and insightful things that I've learned throughout this course.</p>
+            <div class="chips">
+              <span class="chip">Containerizations and Virtualization</span>
+              <span class="chip">Using Virtual Machines</span>
+              <span class="chip">Learning the AWS Environment</span>
+              <span class="chip">Using Docker</span>
+              <span class="chip">Using Kubernetes</span>
+              <span class="chip">Continuous Integration & Delivery</span>
+            </div>
+          </div>
+
+          <div class="highlight-group">
+            <h3>Greatest Strengths</h3>
+            <p>Here are some of my greatest strengths that I've learned throughout my college journey</p>
+            <div class="chips">
+              <span class="chip">UI/UX Design</span>
+              <span class="chip">Front-End Development</span>
+              <span class="chip">Computer Hardware Repairs</span>
+              <span class="chip">Java Programming</span>
+              <span class="chip">Android App Development</span>
+            </div>
+          </div>
+          <div class="highlight-group">
+            <div class="highlight-group">
+                <h3>My Weaknesses</h3>
+                <div class="chips">
+                  <span class="chip">Si Ano....</span>
+                  <span class="chip">Baddie na Interviewer</span>
+                  <span class="chip">Ine English ako sa bansa ko</span>
+                  <span class="chip">Bakit wala pa ring nanangot sa Flood Control?</span>
+                  <span class="chip">RAM para sa AI gusto? RAM para sa masa ayaw?</span>
+                </div>
+            </div> 
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="panel" id="activities" role="tabpanel" hidden>
+      <div class="grid">
+        <div class="pdf-list">
+          <div class="pdf-card">
+            <div class="icon-box">PDF</div>
+            <div class="pdf-info">
+              <p class="pdf-title">Assignment 1</p>
+              <p class="pdf-desc">A Simple CRUD test with API's using Bootstrap</p>
+              <a class="placeholder" href="https://drive.google.com/file/d/1Pk0gFabyHvoeTVbsJpEDdyfWVP39F6PF/view?usp=sharing" target="_blank" rel="noopener">Open Here</a>
+            </div>
+          </div>
+          <div class="pdf-card">
+            <div class="icon-box">PDF</div>
+            <div class="pdf-info">
+              <p class="pdf-title">Assignment 2</p>
+              <p class="pdf-desc">A Step-by-step guide to host a website in AWS</p>
+              <a class="placeholder" href="https://drive.google.com/file/d/1E0xowae7KIT6Y3isvlE7MoCJupWLbUte/view?usp=drive_link" target="_blank" rel="noopener">Open Here</a>
+            </div>
+          </div>
+          <div class="pdf-card">
+            <div class="icon-box">PDF</div>
+            <div class="pdf-info">
+              <p class="pdf-title">Assignment 3</p>
+              <p class="pdf-desc">A Study Plan about Docker and Containerization</p>
+              <a class="placeholder" href="https://drive.google.com/file/d/1EYeKG6D31YAkbR--px71ixZejD7nMMGJ/view?usp=drive_link" target="_blank" rel="noopener">Open Here</a>
+            </div>
+          </div>
+          <div class="pdf-card">
+            <div class="icon-box">PDF</div>
+            <div class="pdf-info">
+              <p class="pdf-title">Assignment 4</p>
+              <p class="pdf-desc">A Narrative Report about Virtualization vs Containerization</p>
+              <a class="placeholder" href="https://drive.google.com/file/d/1V0I69lbad0xLFRyjx4ZH8i7v2kHa-fEo/view?usp=drive_link" target="_blank" rel="noopener">Open Here</a>
+            </div>
+          </div>
+          <div class="pdf-card">
+            <div class="icon-box">PDF</div>
+            <div class="pdf-info">
+              <p class="pdf-title">Assignment 5</p>
+              <p class="pdf-desc">A Home Lab Activity tackling the basics of Kubernetes</p>
+              <a class="placeholder" href="https://drive.google.com/file/d/1Kzf1h5VlAinV-HEjAQCD9LwHfHIbntH2/view?usp=drive_link" target="_blank" rel="noopener">Open Here</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <script>
+    const tabs = document.querySelectorAll(".tab");
+    const panels = {
+      about: document.querySelector("#about"),
+      activities: document.querySelector("#activities"),
+    };
+    const pill = document.querySelector(".pill");
+
+    function movePill(target) {
+      const { offsetWidth, offsetLeft } = target;
+      pill.style.width = `${offsetWidth}px`;
+      pill.style.transform = `translateX(${offsetLeft}px)`;
+    }
+
+    function setActive(name) {
+      tabs.forEach((tab) => {
+        const isActive = tab.dataset.tab === name;
+        tab.classList.toggle("active", isActive);
+        tab.setAttribute("aria-selected", isActive);
+      });
+      Object.entries(panels).forEach(([key, panel]) => {
+        const isActive = key === name;
+        panel.hidden = !isActive;
+        panel.setAttribute("aria-hidden", !isActive);
+      });
+      const activeTab = document.querySelector(`.tab[data-tab="${name}"]`);
+      if (activeTab) movePill(activeTab);
+    }
+
+    tabs.forEach((tab) =>
+      tab.addEventListener("click", () => setActive(tab.dataset.tab))
+    );
+
+    window.addEventListener("resize", () => {
+      const activeTab = document.querySelector(".tab.active");
+      if (activeTab) movePill(activeTab);
+    });
+
+    const firstActive = document.querySelector(".tab.active");
+    if (firstActive) movePill(firstActive);
+  </script>
+</body>
+</html>
+
